@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Graph;
-using Microsoft.Graph.Models;
-using UserIdentityService.Model;
+﻿
 
 [Route("api/[controller]")]
 [ApiController]
@@ -64,7 +61,7 @@ public class UsersController : ControllerBase
             }
         };
         var createdUser = await _graphClient.Users.PostAsync(newUser);
-        return CreatedAtAction(nameof(GetUser), new { id = createdUser.Id }, createdUser);
+        return CreatedAtAction(nameof(GetUser), new { id = createdUser?.Id }, createdUser);
     }
 
     [HttpPut("{id}")]
