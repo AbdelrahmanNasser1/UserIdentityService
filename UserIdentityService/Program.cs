@@ -1,7 +1,4 @@
-
-
-using UserIdentityService.Interface;
-using UserIdentityService.Services;
+using WebApplication = Microsoft.AspNetCore.Builder.WebApplication;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,6 +33,8 @@ app.UseAuthorization();
 app.UseSwagger();
 app.UseSwaggerUI();
 
+//Add Global Exception Handler
+app.UseMiddleware<GlobalCustomExceptionHandler>();
 
 app.MapControllers();
 
